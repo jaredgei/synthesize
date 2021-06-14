@@ -1,0 +1,30 @@
+@import './variables';
+
+.faqView {
+    .questions {
+        .questionContainer {
+            padding: $xlarge_spacing;
+            transition: padding $short_duration;
+
+            &:nth-child(odd) {
+                background: lighten($blueberry, 52%);
+            }
+
+            .question {
+                font-weight: bold;
+            }
+
+            .topSpace {
+                margin-top: $medium_spacing;
+            }
+
+            @include responsive('<', 800px) {
+                padding: $xlarge_spacing $large_spacing;
+            }
+
+            @include responsive('<', 400px) {
+                padding: $large_spacing;
+            }
+        }
+    }
+}

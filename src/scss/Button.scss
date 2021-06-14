@@ -1,0 +1,76 @@
+@import './variables';
+
+.buttonContainer {
+    position: relative;
+    pointer-events: fill;
+    display: block;
+
+    .button {
+        background: $blueberry;
+        padding: 28px $large_spacing;
+        border-radius: 8px;
+        color: transparent;
+        font-weight: bold;
+        line-height: 1em;
+        cursor: pointer;
+        white-space: nowrap;
+        user-select: none;
+        opacity: 0.4;
+        transition: transform 0.6s, opacity 0.6s;
+
+        &.show {
+            @include cover();
+            color: $white;
+            opacity: 1;
+            transition: transform $short_duration, box-shadow $short_duration;
+        }
+    }
+
+    &.inverted {
+        .button {
+            background: $white;
+
+            &.show {
+                color: $blueberry;
+            }
+        }
+    }
+
+    &.small {
+        .button {
+            padding: $medium_spacing;
+        }
+    }
+
+    &:before {
+        content: '';
+        @include cover();
+        background: $white;
+        border-radius: 8px;
+        opacity: 0.4;
+        transition: all $medium_duration;
+    }
+
+    &:hover {
+        &:before {
+            transform: scale(1.6);
+            opacity: 0;
+        }
+
+        .button:not(.show) {
+            transform: scale(1.4);
+            opacity: 0;
+        }
+
+        .button.show {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    &:active {
+        .button.show {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(2px);
+        }
+    }
+}

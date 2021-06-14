@@ -1,0 +1,87 @@
+@import './variables';
+
+.contactView {
+    .pageContainer {
+        background: linear-gradient(to bottom right, $blueberry 30%, mix($blueberry, $strawberry, 75%));
+        min-height: calc(100vh - #{$header_height + $footer_height});
+        padding: $xlarge_spacing $large_spacing;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: padding $short_duration;
+
+        .formContainer {
+            padding: $large_spacing;
+            background: $white;
+            border-radius: $standard_border_radius;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+
+            .errorContainer {
+                color: $strawberry;
+                font-weight: bold;
+                margin-bottom: $large_spacing;
+                font-size: 0.8em;
+                text-align: center;
+            }
+
+            .formEntry {
+                margin-bottom: $large_spacing;
+
+                .formHeader {
+                    font-weight: bold;
+                    display: inline-block;
+                    position: relative;
+                    font-size: 0.8em;
+
+                    &.required::after {
+                        content: ' *';
+                        position: absolute;
+                        top: -10%;
+                        left: 100%;
+                        padding-left: $tiny_spacing;
+                        font-size: 0.8em;
+                        color: $strawberry;
+                    }
+                }
+
+                select, input, textarea {
+                    width: 100%;
+                }
+
+                textarea {
+                    min-height: 69px;
+                }
+
+                &.error {
+                    .formHeader {
+                        color: $strawberry;
+                    }
+
+                    input[type=text],
+                    textarea {
+                        border: 1px solid $strawberry !important;
+                    }
+                }
+            }
+
+            .terms,
+            .files {
+                font-size: 0.8em;
+                line-height: 1.2em;
+                margin-top: $medium_spacing;
+            }
+
+            .buttonContainer {
+                text-align: center;
+            }
+        }
+
+        @include responsive('<', 400px) {
+            padding: $small_spacing;
+        }
+    }
+}

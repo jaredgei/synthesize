@@ -1,0 +1,121 @@
+@import './variables';
+
+.servicesView {
+    .products {
+        background: linear-gradient(to bottom right, $blueberry 30%, mix($blueberry, $strawberry, 75%));
+        padding: $xlarge_spacing;
+        font-size: 1.2em;
+        line-height: 1.6em;
+        display: flex;
+        transition: padding $short_duration, font-size $short_duration;
+
+        .product {
+            background: $white;
+            border-radius: $standard_border_radius;
+            margin: $large_spacing;
+            padding: $large_spacing;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            transition: margin $short_duration, padding $short_duration;
+
+            .label {
+                margin-bottom: $large_spacing;
+                font-size: 1.2em;
+            }
+
+            .description {
+                opacity: 0.6;
+                margin-top: $large_spacing;
+                flex: 1;
+            }
+
+            .price {
+                margin-top: $large_spacing;
+                font-weight: bold;
+                color: $blueberry;
+            }
+
+            &.disabled {
+                opacity: 0.6;
+            }
+        }
+
+        @include responsive('<', 1400px) {
+            padding: $large_spacing;
+        }
+
+        @include responsive('<', 1300px) {
+            padding: $large_spacing $small_spacing;
+
+            .product {
+                margin: $small_spacing;
+            }
+        }
+
+        @include responsive('<', 1200px) {
+            flex-direction: column;
+
+            .product {
+                margin: $small_spacing $medium_spacing;
+            }
+        }
+
+        @include responsive('<', 1000px) {
+            font-size: 1em;
+        }
+
+        @include responsive('<', 400px) {
+            padding: $medium_spacing 0;
+
+            .product {
+                padding: $medium_spacing;
+            }
+        }
+    }
+
+    .examples {
+        font-size: 1.2em;
+        line-height: 1.6em;
+        background: lighten($blueberry, 52%);
+        padding: $xlarge_spacing;
+        transition: padding $short_duration, font-size $short_duration;
+
+        .description {
+            opacity: 0.8;
+        }
+
+        .exampleSection {
+            margin-top: $xlarge_spacing;
+
+            &.separated {
+                padding-top: $xlarge_spacing;
+                border-top: 1px solid transparentize($black, 0.8);
+            }
+
+            .exampleSectionHeader {
+                font-weight: bold;
+            }
+        }
+
+        .exampleQuestions {
+            .questionContainer {
+                &:not(:first-child) {
+                    margin-top: $large_spacing;
+                }
+
+                .answer {
+                    opacity: 0.6;
+                }
+            }
+        }
+
+        @include responsive('<', 1200px) {
+            padding: $large_spacing;
+        }
+
+        @include responsive('<', 1000px) {
+            font-size: 1em;
+        }
+    }
+}

@@ -1,0 +1,111 @@
+/*
+====================
+=======COLORS=======
+====================
+*/
+$black: #111111;
+$darkgray: #222222;
+$gray: #666666;
+$lightgray: #dddddd;
+$silver: #eeeeee;
+$white: #ffffff;
+$blueberry: #5414c9;
+$strawberry: #ff1b6b;
+// make sure you also update static/util/colors.js
+
+
+/*
+===================
+======SPACING======
+===================
+*/
+$tiny_spacing: 4px;
+$small_spacing: 8px;
+$medium_spacing: 16px;
+$large_spacing: 24px;
+$xlarge_spacing: 48px;
+
+
+
+/*
+====================
+=====FONT SIZES=====
+====================
+*/
+$small_font: 0.8em;
+$normal_font: 1em;
+$large_font: 1.2em;
+
+
+
+/*
+====================
+=====ANIMATIONS=====
+====================
+*/
+$xshort_duration: 0.1s;
+$short_duration: 0.2s;
+$medium_duration: 0.4s;
+$long_duration: 1s;
+
+
+
+/*
+==================
+=======MISC=======
+==================
+*/
+$standard_border_radius: 4px;
+$low_z_index: -1;
+$high_z_index: 9999;
+$higher_z_index: 999999;
+$header_height: 80px;
+$footer_height: 72px;
+
+
+/*
+====================
+=====RESPONSIVE=====
+====================
+*/
+$mobile: 980px;
+$directions: (
+    '<': max-width,
+    '<=': max-width,
+    '>': min-width,
+    '>=': min-width,
+    between: between
+);
+
+
+
+/*
+Example usage:
+@include responsive('<', 600px) {...}
+@include responsive('>=', 400px) {...}
+@include responsive('between', 400px, 600px) {...}
+*/
+@mixin responsive($direction, $px, $px2: null) {
+    $dir: map-get($directions, $direction);
+    @if $dir == null {
+        @warn 'missing direction "#{$direction}"';
+    } @else {
+        @if $dir == 'between' and $px2 != null {
+            @media only screen and (min-width: $px) and (max-width: $px2) {
+                @content;
+            }
+        } @else {
+            @media only screen and ($dir: $px) {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin cover() {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

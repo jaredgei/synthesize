@@ -1,0 +1,178 @@
+@import './variables';
+
+html,
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Gothic A1', sans-serif;
+    height: 100%;
+    font-size: 1em;
+    line-height: 1.6em;
+    background: $white;
+    color: $darkgray;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit; // all elements use border-box but are easily overridable as needed
+}
+
+#root {
+    height: 100%;
+}
+
+a, a:link, a:visited, a:active, .fakeLink {
+    color: $blueberry;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color $short_duration;
+    cursor: pointer;
+
+    &:hover {
+        color: lighten($blueberry, 10%);
+    }
+}
+
+h1 {
+    font-size: 2.8em;
+    line-height: 1.2em;
+    margin: 0;
+    font-weight: bold;
+    transition: font-size $short_duration;
+
+    @include responsive('<', 800px) {
+        font-size: 2.2em;
+    }
+}
+
+select {
+    font-family: inherit;
+    appearance: none;
+    padding: $small_spacing;
+    padding-right: $medium_spacing + 14px;
+    margin: 0;
+    border-radius: $standard_border_radius;
+    font-weight: bold;
+    line-height: 1.2em;
+    height: 35px;
+    border: 1px solid $lightgray;
+    background: lighten($lightgray, 12%) url('../images/caret.svg') right $small_spacing center/14px 14px no-repeat;
+    // hack to hide "focused" outline in firefox
+    color: transparent;
+    text-shadow: 0 0 0 $darkgray;
+    max-width: 100%;
+
+    option {
+        // usually you can't style "option" tags but for some reason in ubuntu you can, so this will ensure text is readable
+        color: $white;
+        background: $black;
+    }
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    &::-ms-value {
+        background: transparent;
+        color: $black;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+input[type="radio"] {
+    appearance: none;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    background: $white;
+    border: 1px solid $lightgray;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: $small_spacing;
+    // hack to hide ugly firefox border, see: https://stackoverflow.com/questions/3773430/remove-outline-from-select-box-in-ff
+    box-shadow: inset 0 0 0 0px $black;
+    transition: box-shadow $medium_duration;
+
+    &:checked {
+        background: $blueberry;
+        box-shadow: inset 0 0 0 4px $white;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:disabled {
+        cursor: default;
+    }
+}
+
+input[type='text'],
+input[type='number'] {
+    background: lighten($lightgray, 12%);
+    font-family: inherit;
+    color: $black;
+    padding: $small_spacing;
+    margin: 0;
+    border-radius: $standard_border_radius;
+    border: 1px solid $lightgray;
+    transition: border $short_duration;
+    height: 35px;
+    -moz-appearance:textfield;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $blueberry;
+    }
+}
+
+textarea {
+    background: lighten($lightgray, 12%);
+    font-family: inherit;
+    color: $black;
+    padding: $small_spacing;
+    margin: 0;
+    border-radius: $standard_border_radius;
+    border: 1px solid $lightgray;
+    transition: border $short_duration;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $blueberry;
+    }
+}
+
+label {
+    vertical-align: middle;
+}
+
+div {
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+img {
+    transition: opacity $short_duration;
+}
+
+.app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        flex-shrink: 0;
+    }
+
+    .contentContainer {
+        flex: 1;
+    }
+}
+
+[contenteditable] { // this is needed to get contenteditable divs working in safari
+    user-select: text !important;
+}

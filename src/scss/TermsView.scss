@@ -1,0 +1,14 @@
+@import './variables';
+
+.termsView {
+    padding: $xlarge_spacing;
+    background: lighten($blueberry, 51%);
+
+    div {
+        margin-top: $medium_spacing;
+
+        &.italic {
+            font-style: italic;
+        }
+    }
+}

@@ -1,0 +1,301 @@
+@import './variables';
+
+$mixed: mix($blueberry, $strawberry, 75%);
+
+.homeView {
+    .buttonContainer {
+        margin-top: $large_spacing;
+    }
+
+    .hero {
+        height: calc(100vh - #{$header_height});
+        max-height: 600px;
+        background: linear-gradient(to bottom right, lighten($blueberry, 10%) 30%, lighten($mixed, 10%));
+        background-attachment: fixed;
+        position: relative;
+
+        .hexagonsContainer {
+            @include cover();
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+
+            .hexagonGrid {
+                .hexagonRow {
+                    display: inline-flex;
+                    margin-left: -75px;
+                    margin-top: -48px;
+                    overflow: hidden;
+
+                    &:nth-child(even) {
+                        margin-left: 1px;
+                    }
+
+                    .hexagon {
+                        position: relative;
+                        height: 165px;
+                        width: 150px;
+                        background: $black;
+                        margin: 1px;
+                        clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                        opacity: 0.2;
+                        transition: opacity 1s;
+
+                        &:hover {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .content {
+            @include cover();
+            pointer-events: none;
+            font-weight: bold;
+            padding: $xlarge_spacing 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            opacity: 0;
+            transition: opacity $long_duration, padding $short_duration;
+
+            &.visible {
+                opacity: 1;
+            }
+
+            .text {
+                font-size: 3em;
+                line-height: 1.4em;
+                color: $white;
+                opacity: 0.9;
+                transition: font-size $short_duration;
+            }
+
+            @include responsive('<', 1200px) {
+                .text {
+                    font-size: 2.4em;
+                }
+            }
+
+            @include responsive('<', 1000px) {
+                padding: $xlarge_spacing;
+            }
+
+            @include responsive('<', 800px) {
+                .text {
+                    font-size: 2em;
+                }
+            }
+
+            @include responsive('<', 600px) {
+                padding: $large_spacing;
+                align-items: center;
+            }
+
+            @include responsive('<', 500px) {
+                .text {
+                    font-size: 1.6em;
+                }
+            }
+
+            @include responsive('<', 400px) {
+                .text {
+                    font-size: 1.4em;
+                }
+            }
+        }
+    }
+
+    .about {
+        background: $white;
+        padding: $xlarge_spacing;
+        font-size: 1.2em;
+        line-height: 1.6em;
+        transition: padding $short_duration, font-size $short_duration;
+
+        .flexImage {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+
+            .imageContainer {
+                width: 500px;
+                padding: $xlarge_spacing;
+                display: flex;
+                align-items: center;
+                transition: width $short_duration, padding $short_duration;
+
+                img {
+                    min-width: 0;
+                    width: 100%;
+                }
+            }
+
+            .textContainer {
+                flex: 1;
+                padding: $xlarge_spacing;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                transition: padding $short_duration;
+
+                div:not(:first-child) {
+                    margin-top: $medium_spacing;
+                }
+            }
+        }
+
+        @include responsive('<', 1200px) {
+            padding: $large_spacing 0;
+        }
+
+        @include responsive('<', 1000px) {
+            font-size: 1em;
+
+            .flexImage .imageContainer {
+                width: 380px;
+                padding: $large_spacing;
+            }
+
+            .flexImage .textContainer {
+                padding: $large_spacing;
+            }
+        }
+
+        @include responsive('<', 800px) {
+            .flexImage {
+                flex-direction: column;
+                align-items: center;
+
+                .imageContainer {
+                    max-width: 100%;
+
+                    img {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .industries {
+        background: lighten($blueberry, 52%);
+        padding: $xlarge_spacing;
+        font-size: 1.2em;
+        line-height: 1.6em;
+        transition: padding $short_duration, font-size $short_duration;
+
+        .industriesContent {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: $xlarge_spacing;
+            text-align: center;
+            transition: padding $short_duration;
+
+            div:not(:first-child) {
+                margin-top: $medium_spacing;
+            }
+
+            .icons {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+
+                .iconBlock {
+                    width: 180px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 36px;
+                    transition: margin $short_duration;
+
+                    .iconImageContainer {
+                        height: 100px;
+
+                        img {
+                            height: 100%;
+                            max-width: 120px;
+                        }
+                    }
+
+                    .iconDescription {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        @include responsive('<', 1200px) {
+            padding: $large_spacing 0;
+        }
+
+        @include responsive('<', 1000px) {
+            font-size: 1em;
+
+            .industriesContent {
+                padding: $large_spacing;
+
+                .icons .iconBlock {
+                    margin: $large_spacing;
+                }
+            }
+        }
+    }
+
+    .purchase {
+        background: $blueberry;
+        padding: $xlarge_spacing * 2;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $white;
+        transition: padding $short_duration;
+
+        .purchaseText {
+            margin-top: $xlarge_spacing;
+            margin-bottom: $large_spacing;
+            font-size: 2em;
+            line-height: 1.4em;
+            font-weight: bold;
+            transition: font-size $short_duration;
+        }
+
+        img {
+            width: 80px;
+        }
+
+        @include responsive('<', 1200px) {
+            padding: ($xlarge_spacing + $large_spacing) 0;
+
+            .purchaseText {
+                font-size: 2.4em;
+            }
+        }
+
+        @include responsive('<', 1000px) {
+            padding: $xlarge_spacing $large_spacing;
+        }
+
+        @include responsive('<', 800px) {
+            .purchaseText {
+                font-size: 2em;
+            }
+        }
+
+        @include responsive('<', 500px) {
+            .purchaseText {
+                font-size: 1.6em;
+            }
+        }
+
+        @include responsive('<', 400px) {
+            .purchaseText {
+                font-size: 1.4em;
+            }
+        }
+    }
+}
