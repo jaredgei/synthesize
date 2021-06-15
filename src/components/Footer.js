@@ -11,7 +11,7 @@ export default class Footer extends Component {
     render() {
         return (
             <div className='footer'>
-                <div className='copyright'>&copy;2021 synthesize.consulting<span className='allRights'> All rights reserved.</span></div>
+                <div className='copyright'>&copy;2021 synthesize.consulting</div>
                 <div className='socials'>
                     <a href='https://angel.co/company/synthesizeconsulting' target='_blank' rel='noopener noreferrer'><Image className='al' src={angellist_icon} alt='AngelList' /></a>
                     <a href='https://www.linkedin.com/company/synthesizeconsulting' target='_blank' rel='noopener noreferrer'><Image className='li' src={linkedin_icon} alt='LinkedIn' /></a>

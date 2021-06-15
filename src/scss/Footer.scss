@@ -45,10 +45,4 @@
              }
         }
     }
-
-    @include responsive('<', 480px) {
-        .allRights {
-            display: none;
-        }
-    }
 }
