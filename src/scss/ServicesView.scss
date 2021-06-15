@@ -136,25 +136,19 @@
                         height: 100%;
                         z-index: $high_z_index + 1;
                         clip-path: none;
+                        background: lighten($blueberry, 10%);
 
                         .hexagonTitle {
                             display: none;
-                        }
-
-                        &:hover {
-                            background: $blueberry;
                         }
                     }
 
                     &.yesno {
                         background: mix($strawberry, $blueberry);
 
-                        &:hover {
+                        &:hover,
+                        &.open {
                             background: lighten(mix($strawberry, $blueberry), 10%);
-                        }
-
-                        &.open:hover {
-                            background: mix($strawberry, $blueberry);
                         }
                     }
 
