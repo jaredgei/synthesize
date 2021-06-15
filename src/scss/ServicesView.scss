@@ -81,31 +81,130 @@
         padding: $xlarge_spacing;
         transition: padding $short_duration, font-size $short_duration;
 
-        .description {
-            opacity: 0.8;
+        .headers {
+            .highlight {
+                text-align: center;
+            }
+
+            .description {
+                opacity: 0.8;
+                text-align: center;
+            }
         }
 
         .exampleSection {
             margin-top: $xlarge_spacing;
+            position: relative;
 
-            &.separated {
-                padding-top: $xlarge_spacing;
-                border-top: 1px solid transparentize($black, 0.8);
+            .hexagons {
+                height: 342px;
+
+                .hexagon {
+                    height: 165px;
+                    width: 150px;
+                    background: $blueberry;
+                    margin: 1px;
+                    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                    position: absolute;
+                    z-index: $high_z_index;
+                    top: $large_spacing;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    margin: 0 auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: all $medium_duration;
+
+                    &:first-child { left: -300px - $small_spacing; }
+                    &:nth-child(3) { left: 300px + $small_spacing; }
+                    &:nth-child(4) { left: -150px - ($small_spacing / 2); top: 120px + $large_spacing + $small_spacing; }
+                    &:nth-child(5) { left: 150px + ($small_spacing / 2); top: 120px + $large_spacing + $small_spacing; }
+
+                    &:hover {
+                        background: lighten($blueberry, 10%);
+                    }
+
+                    &.open {
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 100%;
+                        z-index: $high_z_index + 1;
+                        clip-path: none;
+
+                        .hexagonTitle {
+                            display: none;
+                        }
+
+                        &:hover {
+                            background: $blueberry;
+                        }
+                    }
+
+                    &.yesno {
+                        background: mix($strawberry, $blueberry);
+
+                        &:hover {
+                            background: lighten(mix($strawberry, $blueberry), 10%);
+                        }
+
+                        &.open:hover {
+                            background: mix($strawberry, $blueberry);
+                        }
+                    }
+
+                    .hexagonTitle {
+                        color: $white;
+                        max-width: 100px;
+                        font-weight: bold;
+                        font-size: 0.8em;
+                        line-height: 1.4em;
+                        user-select: none;
+                        text-align: center;
+                        transition: all $medium_duration;
+                    }
+                }
+
+                .hexagonOverlay {
+                    opacity: 0;
+                }
             }
 
-            .exampleSectionHeader {
-                font-weight: bold;
-            }
-        }
+            .textOverlay {
+                @include cover();
+                z-index: $high_z_index + 2;
+                opacity: 0;
+                padding: $large_spacing;
+                pointer-events: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                transition: opacity $medium_duration;
 
-        .exampleQuestions {
-            .questionContainer {
-                &:not(:first-child) {
-                    margin-top: $large_spacing;
+                .question,
+                .answer {
+                    color: $white;
+                    font-size: 0.8em;
+                    max-width: 800px;
+                    margin: 0 auto;
+                }
+
+                .question {
+                    font-weight: bold;
+                    margin-bottom: $large_spacing;
                 }
 
                 .answer {
-                    opacity: 0.6;
+                    opacity: 0.8;
+                }
+
+                &.show {
+                    opacity: 1;
                 }
             }
         }

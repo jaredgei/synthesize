@@ -2,6 +2,31 @@ import React, { Component } from 'react';
 import 'static/css/ServicesView.css';
 
 export default class ServicesView extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            char_open_example: '',
+            char_question: '',
+            char_answer: '',
+            yesno_open_example: '',
+            yesno_question: '',
+            yesno_answer: ''
+        };
+    }
+
+    renderHexagon(type, title, question, answer) {
+        const is_open = this.state[`${type}_open_example`] === title;
+        const new_state = {};
+        new_state[`${type}_open_example`] = is_open ? '' : title;
+        new_state[`${type}_question`] = is_open ? '' : question;
+        new_state[`${type}_answer`] = is_open ? '' : answer;
+        return (
+            <div className={`hexagon ${type}` + (is_open ? ' open' : '')} onClick={() => this.setState(new_state)}>
+                <div className='hexagonTitle'>{title}</div>
+            </div>
+        );
+    }
+
     render() {
         return (
             <div className='servicesView'>
@@ -26,60 +51,34 @@ export default class ServicesView extends Component {
                     </div>
                 </div>
                 <div className='examples'>
-                    <div className='highlight'>Examples</div>
-                    <div className='description'>The following are illustrative examples of submissions and responses. Any similarities with existing businesses or individuals is coincidental.</div>
+                    <div className='headers'>
+                        <div className='highlight'>Examples</div>
+                        <div className='description'>The following are illustrative examples of submissions and responses. Any similarities with existing businesses or individuals is coincidental.</div>
+                    </div>
                     <div className='exampleSection'>
-                        <div className='exampleSectionHeader'>300-Character Guidance</div>
-                        <div className='exampleQuestions'>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: How should our carbon offsets company think about where to expand globally?</div>
-                                <div className='answer'>Only expand if it helps either A lower costs to operate or B enter a new market. As an early startup, A is minimal since better to have your operations local to your HQ. B may be attractive since EU now only accepts regional credits. But there are significant regulatory hurdles to qualify your nascent tech. Better to stay local in near-term and tap the voluntary carbon markets.</div>
-                            </div>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: Which type of prize should be used for a sweepstakes campaign to grow membership of our expert advice website for high school seniors?</div>
-                                <div className='answer'>A specific product or service may narrow the relevant appeal/ audience for a prize; instead, a broad one is best. By creating a cash prize framed as a scholarship for personal growth, winners can spend on what is best for them: debt, education, professional outfits, etc. It creates consistent messaging with your company brand.</div>
-                            </div>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: How should I think about framing my experience to enter the management consulting industry when I only have a technical science / lab-based background?</div>
-                                <div className='answer'>Relate your lab work to the business world - having a vision/ entrepreneurship, testing hypotheses, interpersonal conflict, pivoting with new data, measurable outcomes. Think of specific stories that demonstrate these that non-scientists can understand. Also, unless you want to be a content expert in your scientific field, important to have some light business experience prior to applying.</div>
-                            </div>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: How should my Thai restaurant think about our future strategy based on ongoing COVID-19 trends?</div>
-                                <div className='answer'>Two major dining trends will likely emerge: increased A digital-enabled delivery and B desire to make up for missed human connection. B will likely be an intense but fleeting trend as restaurants reopen and people are comfortable with larger meetups. A will likely be more sustainable. If your restaurant already has a large takeout presence, would recommend cutting real-estate costs to be a takeout/ delivery focused service (see: ghost kitchen).</div>
-                            </div>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: My company is an early-stage digitally-enabled storage startup that helps connect people with space in their homes/ apartments with people looking for storage. Who should we target first to help get the idea off the ground and prove the concept?</div>
-                                <div className='answer'>The moving-out undergrad student market. After a semester/year, students look for solutions to store their major dorm room items. This group of customers prefers digital-first products and values convenience + marketing can be highly targeted through flyers, student clubs, student reps, social media. However, the group is also price sensitive so ensure you are similar enough to competitors.</div>
-                            </div>
+                        <div className='hexagons'>
+                            {this.renderHexagon('char', 'Corporate Strategy', 'How should our carbon offsets company think about where to expand globally?', 'Only expand if it helps either A lower costs to operate or B enter a new market. As an early startup, A is minimal since better to have your operations local to your HQ. B may be attractive since EU now only accepts regional credits. But there are significant regulatory hurdles to qualify your nascent tech. Better to stay local in near-term and tap the voluntary carbon markets.')}
+                            {this.renderHexagon('char', 'Social Enterprise', 'Which type of prize should be used for a sweepstakes campaign to grow membership of our expert advice website for high school seniors?', 'A specific product or service may narrow the relevant appeal/ audience for a prize; instead, a broad one is best. By creating a cash prize framed as a scholarship for personal growth, winners can spend on what is best for them: debt, education, professional outfits, etc. It creates consistent messaging with your company brand.')}
+                            {this.renderHexagon('char', 'Entering the Industry', 'How should I think about framing my experience to enter the management consulting industry when I only have a technical science / lab-based background?', 'Relate your lab work to the business world - having a vision/ entrepreneurship, testing hypotheses, interpersonal conflict, pivoting with new data, measurable outcomes. Think of specific stories that demonstrate these that non-scientists can understand. Also, unless you want to be a content expert in your scientific field, important to have some light business experience prior to applying.')}
+                            {this.renderHexagon('char', 'Small Business', 'How should my Thai restaurant think about our future strategy based on ongoing COVID-19 trends?', 'Two major dining trends will likely emerge: increased A digital-enabled delivery and B desire to make up for missed human connection. B will likely be an intense but fleeting trend as restaurants reopen and people are comfortable with larger meetups. A will likely be more sustainable. If your restaurant already has a large takeout presence, would recommend cutting real-estate costs to be a takeout/ delivery focused service (see: ghost kitchen).')}
+                            {this.renderHexagon('char', 'Startup Strategy', 'My company is an early-stage digitally-enabled storage startup that helps connect people with space in their homes/ apartments with people looking for storage. Who should we target first to help get the idea off the ground and prove the concept?', 'The moving-out undergrad student market. After a semester/year, students look for solutions to store their major dorm room items. This group of customers prefers digital-first products and values convenience + marketing can be highly targeted through flyers, student clubs, student reps, social media. However, the group is also price sensitive so ensure you are similar enough to competitors.')}
+                        </div>
+                        <div className={'textOverlay' + (this.state.char_open_example ? ' show' : '')}>
+                            <div className='question'>Q: {this.state.char_question}</div>
+                            <div className='answer'>{this.state.char_answer}</div>
                         </div>
                     </div>
-                    <div className='exampleSection separated'>
-                        <div className='exampleSectionHeader'>Yes/No Guidance</div>
-                        <div className='exampleQuestions'>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: Do you believe [company redacted] has significant growth potential and is worth exploring an acquisition?</div>
-                                <div className='answer'>Yes</div>
-                            </div>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: Do you see the medical psychedelics industry following a similar growth curve as the Canadian recreational cannabis industry?</div>
-                                <div className='answer'>No</div>
-                            </div>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: Do you see NFTs (non-fungible tokens) continuing to be relevant long-term?</div>
-                                <div className='answer'>Yes</div>
-                            </div>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: Do you believe all companies should develop digital products using the agile methodology?</div>
-                                <div className='answer'>No</div>
-                            </div>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: Is the best way to motivate my employees through a salary increase?</div>
-                                <div className='answer'>No</div>
-                            </div>
-                            <div className='questionContainer'>
-                                <div className='question'>Q: Can pineapple go on pizza?</div>
-                                <div className='answer'>Yes</div>
-                            </div>
+                    <div className='exampleSection'>
+                        <div className='hexagons'>
+                            {this.renderHexagon('yesno', 'Corporate Strategy', 'Do you believe [company redacted] has significant growth potential and is worth exploring an acquisition?', 'Yes')}
+                            {this.renderHexagon('yesno', 'Social Enterprise', 'Do you see the medical psychedelics industry following a similar growth curve as the Canadian recreational cannabis industry?', 'No')}
+                            {this.renderHexagon('yesno', 'Entering the Industry', 'Do you see NFTs (non-fungible tokens) continuing to be relevant long-term?', 'Yes')}
+                            {this.renderHexagon('yesno', 'Small Business', 'Do you believe all companies should develop digital products using the agile methodology?', 'No')}
+                            {this.renderHexagon('yesno', 'Startup Strategy', 'Is the best way to motivate my employees through a salary increase?', 'No')}
+                        </div>
+                        <div className={'textOverlay' + (this.state.yesno_open_example ? ' show' : '')}>
+                            <div className='question'>Q: {this.state.yesno_question}</div>
+                            <div className='answer'>{this.state.yesno_answer}</div>
                         </div>
                     </div>
                 </div>
