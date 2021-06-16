@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import 'static/css/FaqView.css';
 
 export default class FaqView extends Component {
     render() {
         return (
             <div className='faqView'>
+                <div className='faqHero'>
+                    <div className='faqTitle'>FAQ</div>
+                    <div className='faqDescription'>If you can't find an answer below,</div>
+                    <div className='faqDescription'>please <Link to='/contact?product=other'>contact me</Link>.</div>
+                </div>
                 <div className='questions'>
                     <div className='questionContainer'>
                         <div className='question'>In which topics are you an expert?</div>

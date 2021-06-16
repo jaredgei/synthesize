@@ -11,13 +11,15 @@
 
         .product {
             background: $white;
+            color: $black;
+            font-weight: normal;
             border-radius: $standard_border_radius;
             margin: $large_spacing;
             padding: $large_spacing;
             flex: 1;
             display: flex;
             flex-direction: column;
-            transition: margin $short_duration, padding $short_duration;
+            transition: margin $short_duration, padding $short_duration, transform $short_duration;
 
             .label {
                 margin-bottom: $large_spacing;
@@ -26,6 +28,8 @@
 
             .description {
                 opacity: 0.6;
+                font-size: 0.8em;
+                line-height: 1.4em;
                 margin-top: $large_spacing;
                 flex: 1;
             }
@@ -34,6 +38,10 @@
                 margin-top: $large_spacing;
                 font-weight: bold;
                 color: $blueberry;
+            }
+
+            &:hover {
+                transform: translateY(-$small_spacing);
             }
 
             &.disabled {
@@ -96,8 +104,16 @@
             margin-top: $xlarge_spacing;
             position: relative;
 
+            .exampleTitle {
+                text-align: center;
+                font-weight: bold;
+
+                &.char { color: $blueberry }
+                &.yesno { color: mix($blueberry, $strawberry) }
+            }
+
             .hexagons {
-                height: 342px;
+                height: 320px;
 
                 .hexagon {
                     height: 165px;
@@ -107,7 +123,7 @@
                     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
                     position: absolute;
                     z-index: $high_z_index;
-                    top: $large_spacing;
+                    top: $xlarge_spacing;
                     left: 0;
                     right: 0;
                     bottom: 0;
@@ -120,8 +136,8 @@
 
                     &:first-child { left: -300px - $small_spacing; }
                     &:nth-child(3) { left: 300px + $small_spacing; }
-                    &:nth-child(4) { left: -150px - ($small_spacing / 2); top: 120px + $large_spacing + $small_spacing; }
-                    &:nth-child(5) { left: 150px + ($small_spacing / 2); top: 120px + $large_spacing + $small_spacing; }
+                    &:nth-child(4) { left: -150px - ($small_spacing / 2); top: 120px + $xlarge_spacing + $small_spacing; }
+                    &:nth-child(5) { left: 150px + ($small_spacing / 2); top: 120px + $xlarge_spacing + $small_spacing; }
 
                     &:hover {
                         background: lighten($blueberry, 10%);
@@ -154,12 +170,12 @@
 
                     .hexagonTitle {
                         color: $white;
-                        max-width: 100px;
                         font-weight: bold;
                         font-size: 0.8em;
                         line-height: 1.4em;
                         user-select: none;
                         text-align: center;
+                        word-spacing: 300000px;
                         transition: all $medium_duration;
                     }
                 }
@@ -209,6 +225,57 @@
 
         @include responsive('<', 1000px) {
             font-size: 1em;
+
+            .exampleSection {
+                .hexagons {
+                    height: 260px;
+
+                    .hexagon {
+                        height: 132px;
+                        width: 120px;
+
+                        &:not(.open) {
+                            &:first-child { left: -240px - $small_spacing; }
+                            &:nth-child(3) { left: 240px + $small_spacing; }
+                            &:nth-child(4) { left: -120px - ($small_spacing / 2); top: 95px + $xlarge_spacing + $small_spacing; }
+                            &:nth-child(5) { left: 120px + ($small_spacing / 2); top: 95px + $xlarge_spacing + $small_spacing; }
+                        }
+                    }
+                }
+            }
+        }
+
+        @include responsive('<', 500px) {
+            font-size: 1em;
+
+            .exampleSection {
+                .hexagons {
+                    height: 260px;
+
+                    .hexagon {
+                        height: 110px;
+                        width: 100px;
+
+                        .hexagonTitle {
+                            font-size: 0.7em;
+                        }
+
+                        &:not(.open) {
+                            &:first-child { left: -200px - $small_spacing; }
+                            &:nth-child(3) { left: 200px + $small_spacing; }
+                            &:nth-child(4) { left: -100px - ($small_spacing / 2); top: 78px + $xlarge_spacing + $small_spacing; }
+                            &:nth-child(5) { left: 100px + ($small_spacing / 2); top: 78px + $xlarge_spacing + $small_spacing; }
+                        }
+                    }
+                }
+
+                .textOverlay {
+                    .question, .answer {
+                        font-size: 0.7em;
+                        line-height: 1.4em;
+                    }
+                }
+            }
         }
     }
 }

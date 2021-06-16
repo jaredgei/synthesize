@@ -1,25 +1,91 @@
 @import './variables';
 
 .faqView {
+    .faqHero {
+        background: lighten($blueberry, 52%);
+        padding: $xlarge_spacing * 2;
+        font-size: 1.4em;
+        line-height: 1.4em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: font-size $short_duration, padding $short_duration;
+
+        .faqTitle {
+            font-size: 3em;
+            line-height: 1.4em;
+            font-weight: bold;
+
+            transition: font-size $short_duration;
+        }
+
+        @include responsive('<', 1200px) {
+            .faqTitle {
+                font-size: 2.4em;
+            }
+        }
+
+        @include responsive('<', 1000px) {
+            font-size: 1em;
+
+            padding: $large_spacing * 2;
+        }
+
+        @include responsive('<', 800px) {
+            .faqTitle {
+                font-size: 2em;
+            }
+        }
+
+        @include responsive('<', 600px) {
+            padding: $large_spacing;
+            align-items: center;
+        }
+
+        @include responsive('<', 500px) {
+            .faqTitle {
+                font-size: 1.6em;
+            }
+        }
+
+        @include responsive('<', 400px) {
+            .faqTitle {
+                font-size: 1.4em;
+            }
+        }
+    }
+
     .questions {
         .questionContainer {
             padding: $xlarge_spacing;
-            transition: padding $short_duration;
-
-            &:nth-child(odd) {
-                background: lighten($blueberry, 52%);
-            }
+            margin: $xlarge_spacing;
+            background: $blueberry;
+            color: $white;
+            border-radius: $standard_border_radius;
+            transition: padding $short_duration, margin $short_duration;
 
             .question {
                 font-weight: bold;
+                font-size: 1.6em;
+                line-height: 1.6em;
+            }
+
+            .answer {
+                opacity: 0.8;
+                margin-top: $large_spacing;
             }
 
             .topSpace {
                 margin-top: $medium_spacing;
             }
 
-            @include responsive('<', 800px) {
-                padding: $xlarge_spacing $large_spacing;
+            @include responsive('<', 1000px) {
+                margin: $large_spacing;
+                padding: $large_spacing;
+
+                .question {
+                    font-size: 1.4em;
+                }
             }
 
             @include responsive('<', 400px) {

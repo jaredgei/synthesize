@@ -12,8 +12,14 @@ const PAYMENT_LINKS = {
 export default class ContactView extends Component {
     constructor(props) {
         super(props);
+
+        let product = '300character';
+        if (this.props.location.search && this.props.location.search.indexOf('?product=' !== -1)) {
+            product = this.props.location.search.slice(9, this.props.location.search.length);
+        }
+
         this.state = {
-            product: '300character',
+            product,
             subject: '',
             company_name: '',
             content: '',
