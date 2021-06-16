@@ -90,6 +90,7 @@
 
             @include responsive('<', 400px) {
                 padding: $large_spacing;
+                margin: $medium_spacing;
             }
         }
     }
