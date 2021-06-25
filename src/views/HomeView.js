@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import 'static/css/HomeView.css';
 import Button from 'components/Button';
 import Image from 'components/Image';
@@ -89,9 +90,22 @@ export default class HomeView extends Component {
                         <div className='imageContainer'><Image src={brent_portrait} alt='A portrait of brent' /></div>
                         <div className='textContainer'>
                             <div className='highlight'>Hi. I'm Brent.</div>
-                            <div className='paragraph'>I spent over 5 years at McKinsey & Company where I led teams on strategy and operations for Fortune 500 companies, government agencies, and major nonprofits. I've also created and advised multiple startups and social enterprises.</div>
-                            <div className='paragraph'>While working in management consulting, I noticed that typically only the largest, most established corporations have the ability to access these services. It's important to me that all people, businesses, and organizations can receive the same level of strategic guidance quality.</div>
+                            <div className='paragraph'><span className='bold'>I’m a former Engagement Manager at McKinsey & Company</span> where I specialized in digital/analytics, product development, and sustainability. During my 5+ years there, I had the opportunity to work with many fantastic Fortune 500, public sector, and nonprofit clients on numerous projects.</div>
+                            <div className='paragraph'>However, I found while working in management consulting that typically only the largest, most established corporations have the ability to access these services. It’s important to me that all people, businesses, and organizations can receive access to the same level of quality strategic guidance.</div>
                             <div className='paragraph'><span className='bold'>That's why I created synthesize.consulting</span> to help guide you through your questions, big and small, with bite-sized advice.</div>
+                        </div>
+                    </div>
+                </div>
+                <div className='experience'>
+                    <div className='flexImage'>
+                        <div className='textContainer'>
+                            <div className='highlight'>A few highlights of my work include:</div>
+                            <div className='paragraph'><span className='bold'>Creating a new CEO-led international water sustainability coalition with the potential to influence 1/3 of global withdrawals.</span> Specifically, I managed a working team that provided: impact quantification, recruitment strategy, governance model, impact lever summary, post-launch work plan, and executive communication.</div>
+                            <div className='paragraph'><span className='bold'>Coaching Senior Product Owners of a multinational insurance company to adopt agile methodologies for two new digital products</span>, including: product ideation/vision, customer journey creation, persona development, MVP selection, customer feedback cadence, and operating model.</div>
+                            <div className='paragraph'><span className='bold'>Achieving &gt;99% accuracy for document analysis automation for a leading investment bank to comply with federal regulatory requirements.</span> Specifically, I trained machine learning models, designed a rules engine, and managed a team of software engineers.</div>
+                            <div className='paragraph'><span className='bold'>Authoring a <a href='https://www.mckinsey.com/business-functions/sustainability/our-insights/water-a-human-and-business-priority' target='_blank' rel='noopener noreferrer'>McKinsey Quarterly article on water stress</a> and a <a href='https://www.mckinsey.com/featured-insights/artificial-intelligence/ai-looks-north-bridging-canadas-corporate-artificial-intelligence-gap' target='_blank' rel='noopener noreferrer'>McKinsey white paper on artificial intelligence</a>.</span></div>
+                            <div className='paragraph'><span className='bold'>I’ve also worked with multiple startups and founded two social ventures</span>, including an open-source zero-electricity structure that filters, cools, and dispenses water to help eliminate plastic waste. So far, we’ve saved over 60,000 plastic water bottles from being used.</div>
+                            <div className='paragraph topSpace'>For more information about me, feel free to check out my <a href='https://www.linkedin.com/in/brentpacker/' target='_blank' rel='noopener noreferrer'>Linkedin</a> or send me an <Link to='/contact?product=other'>email</Link>.</div>
                         </div>
                     </div>
                 </div>

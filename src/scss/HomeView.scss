@@ -109,7 +109,8 @@ $mixed: mix($blueberry, $strawberry, 75%);
         }
     }
 
-    .about {
+    .about,
+    .experience {
         background: $white;
         padding: $xlarge_spacing;
         font-size: 1.2em;
@@ -144,6 +145,8 @@ $mixed: mix($blueberry, $strawberry, 75%);
 
                 div:not(:first-child) {
                     margin-top: $medium_spacing;
+
+                    &.topSpace { margin-top: $medium_spacing * 4; }
                 }
             }
         }
@@ -181,8 +184,12 @@ $mixed: mix($blueberry, $strawberry, 75%);
         }
     }
 
-    .industries {
+    .experience {
         background: lighten($blueberry, 52%);
+    }
+
+    .industries {
+        background: $white;
         padding: $xlarge_spacing;
         font-size: 1.2em;
         line-height: 1.6em;
