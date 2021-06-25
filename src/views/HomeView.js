@@ -79,8 +79,8 @@ export default class HomeView extends Component {
                     <div className='hexagonsContainer'>{this.renderHexagons()}</div>
                     <div className={'content' + (animation_timer > 0 ? ' visible' : '')}>
                         <div className='text'>Top-level management</div>
-                        <div className='text'>consulting at a fraction</div>
-                        <div className='text'> of the cost.</div>
+                        <div className='text'>consulting in accessible</div>
+                        <div className='text'>packages.</div>
                         <Button text='Get Started' uri='/services' is_inverted={true} />
                     </div>
                 </div>
@@ -97,17 +97,17 @@ export default class HomeView extends Component {
                 </div>
                 <div className='industries'>
                     <div className='industriesContent'>
-                        <div className='highlight'>Industries and Topics</div>
-                        <div className='paragraph'>Both B2B (business-to-business) and B2C (business-to-customer) consulting across multiple industries and topics are available.</div>
+                        <div className='highlight'>Industries and Functions</div>
+                        <div className='paragraph'>Both B2B (business-to-business) and B2C (business-to-customer) consulting across multiple industries and functions are available.</div>
                         <div className='icons'>
                             {this.renderIconBlock('Strategy', chess_icon)}
                             {this.renderIconBlock('Operations', gear_icon)}
                             {this.renderIconBlock('Digital & Product', code_icon)}
                             {this.renderIconBlock('Sustainability', tree_icon)}
                             {this.renderIconBlock('Financial Services', bank_icon)}
-                            {this.renderIconBlock('Diligence', magnifying_icon)}
+                            {this.renderIconBlock('Due Diligence', magnifying_icon)}
                             {this.renderIconBlock('Startups', rocket_icon)}
-                            {this.renderIconBlock('Nonprofit', hand_icon)}
+                            {this.renderIconBlock('Nonprofits', hand_icon)}
                             {this.renderIconBlock('And More', plus_icon)}
                         </div>
                     </div>
@@ -115,7 +115,7 @@ export default class HomeView extends Component {
                 <div className='purchase'>
                     <Image src={logo_white} alt='Synthesize Logo' />
                     <div className='purchaseText'>Ready to get started?</div>
-                    <Button text={'Let\'s Go'} uri='/contact' is_inverted={true} />
+                    <Button text={'Let\'s Go'} uri='/services' is_inverted={true} />
                 </div>
             </div>
         );

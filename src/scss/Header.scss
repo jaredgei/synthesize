@@ -2,10 +2,18 @@
 
 .header {
     height: $header_height;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 $large_spacing;
-    user-select: none;
+
+    .headerContainer {
+        height: $header_height;
+        width: 100%;
+        position: fixed;
+        z-index: $high_z_index;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 $large_spacing;
+        user-select: none;
+        background: $white;
+    }
 
     .headerLeft {
         max-width: 220px;

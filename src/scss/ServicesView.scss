@@ -43,10 +43,6 @@
             &:hover {
                 transform: translateY(-$small_spacing);
             }
-
-            &.disabled {
-                opacity: 0.6;
-            }
         }
 
         @include responsive('<', 1400px) {
@@ -195,6 +191,15 @@
                 flex-direction: column;
                 justify-content: center;
                 transition: opacity $medium_duration;
+
+                .close {
+                    position: absolute;
+                    top: $medium_spacing;
+                    right: $large_spacing;
+                    color: $white;
+                    font-weight: bold;
+                    font-size: 1.2em;
+                }
 
                 .question,
                 .answer {
