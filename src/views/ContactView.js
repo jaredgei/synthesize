@@ -5,8 +5,8 @@ import 'static/css/ContactView.css';
 import Button from 'components/Button';
 
 const PAYMENT_LINKS = {
-    'yesno': 'https://buy.stripe.com/cN215f9EGgnHcMg9AA',
-    '300character': 'https://buy.stripe.com/5kAeW5eZ02wR7rWeUV'
+    'yesno': 'REDACTED',
+    '300character': 'REDACTED'
 };
 
 export default class ContactView extends Component {
@@ -52,7 +52,7 @@ export default class ContactView extends Component {
         if (required_fields_missing.length > 0) return this.setState({required_fields_missing});
 
         return this.setState({is_submitting_form: true}, () => {
-            return axios.post('https://api.hsforms.com/submissions/v3/integration/submit/20208978/9d570690-2622-4a46-87bc-9d6f8c9a078e', {fields: [
+            return axios.post('REDACTED', {fields: [
                 {name: 'TICKET.product', value: product},
                 {name: 'TICKET.subject', value: subject},
                 {name: 'TICKET.company_name', value: company_name},
